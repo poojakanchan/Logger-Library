@@ -13,38 +13,49 @@ To mitigate this problem, we came up with the compact log format.
 
 The logs are divided into two parts, namely method definition and call-trace. The method definition file stores the method signatures and the call-trace file captures the details of the call-trace of the methods invoked.
 
+Here is the format of a defintion file
+```
 <Method-Id>|<Class-name>|<Method name>|<Arguments>
+```
 
 Field       |  Description
 ------------|---------------------------------------------------------------
-Method-Id:  | A unique Id assigned to identify the method 
-Class-name: | Java class that includes the method
-Method-name:| name of the method
-Arguments:  | The method arguments stored in JVM-style to further minimize the file size. Please visit the link  
+Method-Id   | A unique Id assigned to identify the method 
+Class-name  | Java class that includes the method
+Method-name | name of the method
+Arguments   | The method arguments stored in JVM-style to further minimize the file size.
 
 A couple of examples are provided here to demonstrate the format of a definition file.
-
+```
 void android.widget.TextView.setText(char[], int, int)
 1|android/widget/TextView|setText|([CII)V
 
 void android.widget.TextView.sendBeforeTextChanged(CharSequence, int, int, int)
 2|android/widget/TextView|sendBeforeTextChanged|(Ljava/lang/CharSequence;III)V
+```
 
+The format of a call-trace file is given below:
+```
 <Timestamp>|<Process-Id>|<Thread-Id>|<Event-Type>|<Method-Id>|<[Argument-list]>
-Timestamp: 	Epoch timestamp that denotes the number of seconds that 			have 	elapsed since January 1, 1970.
-Process-Id: 	unique numeric identifier of the current process.
-Thread-id:  	unique numeric identifier of the current thread.
-Event-Type: 	It can be Enter, Exit or custom.
-Method-Id: 	unique-Id of a method defined in the definition file.
-Argument list:  list of the comma separated actual arguments of the method.
-			The actual parameters are stored only with the Enter event 			type and they are not present in the Exit event type to			save file size.
+```
+
+Field        |     Description
+-------------|-------------------------------------------------------------
+Timestamp    | 	Epoch timestamp that denotes the number of seconds that have elapsed since January 1, 1970.
+Process-Id   | 	unique numeric identifier of the current process.
+Thread-id    |  unique numeric identifier of the current thread.
+Event-Type   | 	It can be Enter, Exit or custom.
+Method-Id    | 	unique-Id of a method defined in the definition file.
+Argument-list|  list of the comma separated actual arguments of the method. The actual parameters are stored only with the                |  Enter event type to save file size.
+
 An example of the call-trace format is provided below. 
 
-
+```
 1494277593|396|1|Enter|1|[Hello world!,2,0]
 1494277595|396|1|Enter|2|[0,0,16]
 1494277599|396|1|Exit|2
 1494277604|396|1|Exit|1
+```
 
 The sequence of statements in a call trace file represent the hierarchy of method invocation, for example,
 as can be observed from the above call-trace, method 1 with arguments [Hello world!,2,0] calls method 2 with the arguments [0,0,16].

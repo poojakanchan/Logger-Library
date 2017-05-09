@@ -48,5 +48,9 @@ An example of the call-trace format is provided below.
 The sequence of statements in a call trace file represent the hierarchy of method invocation, for example,
 as can be observed from the above call-trace, method 1 with arguments [Hello world!,2,0] calls method 2 with the arguments [0,0,16].
 
-![Alt text](https://cloud.githubusercontent.com/assets/11932888/25868392/61ab7194-34b1-11e7-8935-7ae97d16124a.png "class diagram")
+![Alt text](https://cloud.githubusercontent.com/assets/11932888/25868392/61ab7194-34b1-11e7-8935-7ae97d16124a.png "Class diagram of Logger")
+
+LoggerFactory uses the factory design pattern to return a singleton instance of an appropriate implementation of the Logger class at run-time depending on the platform. Logger is an abstract class which provides a common functionality for its derived classes. It has three abstract methods getProcessId(), getThreadId() and getFilePath() which must be implemented by the derived classes. It also has two methods logEnter() and logExit() which should be called at the beginning and at the end of the methods respectively. The users may use Java aspects to invoke the above methods of the Logger library. The Logger library also includes the implementation of the Logger class for Linux and Android OSs. For other OSes, the user will need to implement their own extensions of the Logger class. 
+At runtime, the library creates two files to store method definitions and method call-stacks and populates the files with respective entries.
+
 

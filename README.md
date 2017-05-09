@@ -15,11 +15,12 @@ The logs are divided into two parts, namely method definition and call-trace. Th
 
 <Method-Id>|<Class-name>|<Method name>|<Arguments>
 
-Method-Id:   a unique Id assigned to identify the method 
-Class-name:  Java class that includes the method
-Method-name: name of the method
-Arguments: The method arguments stored in JVM-style to further			minimize the file size. Please visit the link 
-		https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-		4.html - jvms-4.3.3 for the detailed explanation on the 		format used by JVM to store the method descriptors.
+Field       |  Description
+------------|---------------------------------------------------------------
+Method-Id:  | A unique Id assigned to identify the method 
+Class-name: | Java class that includes the method
+Method-name:| name of the method
+Arguments:  | The method arguments stored in JVM-style to further minimize the file size. Please visit the link  
 
 A couple of examples are provided here to demonstrate the format of a definition file.
 

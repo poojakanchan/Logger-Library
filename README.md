@@ -48,5 +48,5 @@ An example of the call-trace format is provided below.
 The sequence of statements in a call trace file represent the hierarchy of method invocation, for example,
 as can be observed from the above call-trace, method 1 with arguments [Hello world!,2,0] calls method 2 with the arguments [0,0,16].
 
-![Alt text] (https://cloud.githubusercontent.com/assets/11932888/25868392/61ab7194-34b1-11e7-8935-7ae97d16124a.png)
+![Alt text] (https://cloud.githubusercontent.com/assets/11932888/25868392/61ab7194-34b1-11e7-8935-7ae97d16124a.png "class diagram")
 
